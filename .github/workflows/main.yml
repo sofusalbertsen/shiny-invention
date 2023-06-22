@@ -5,3 +5,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo hello world
+      - name: Dump GitHub context
+        run: echo '${{ toJSON(github)}}'
+      - name: Dump GitHub context
+        run: echo '${{ toJSON(runner)}}'
+      - name: run container
+        uses: docker://hello-world
+      - name: look at the os-release
+        run: cat /etc/os-release
+      - name: Group of log lines
+        run: |
+            echo "::group::My title"
+            echo "Inside group"
+            echo "::endgroup::"
